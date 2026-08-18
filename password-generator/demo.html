@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Password Generator Demo</title>
+  <style>
+    body{margin:0;background:#091026;color:#fff;font-family:Arial,Helvetica,sans-serif}
+    #canvas{width:100vw;height:50vh;display:block}
+    .label{position:relative;padding:16px;text-align:center}
+    .label h1{margin:6px 0 0;font-size:20px;color:#00e0a8}
+    .label p{color:#a9c1d9;margin:6px 0}
+  </style>
+</head>
+<body>
+  <div id="canvas"></div>
+  <div class="label"><h1>Password Generator</h1><p>Open the script to generate secure passwords (CLI)</p></div>
+  <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({antialias:true});
+    renderer.setSize(window.innerWidth, window.innerHeight*0.5);
+    document.getElementById('canvas').appendChild(renderer.domElement);
+
+    const geometry = new THREE.BoxGeometry(3,2,0.2);
+    const material = new THREE.MeshStandardMaterial({color:0x00e0a8, metalness:0.3, roughness:0.4});
+    const cube = new THREE.Mesh(geometry, material);
+    scene.add(cube);
+
+    const light = new THREE.DirectionalLight(0xffffff,1);
+    light.position.set(5,5,5);
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0x404040));
+
+    camera.position.z = 6;
+
+    function animate(){
+      requestAnimationFrame(animate);
+      cube.rotation.y += 0.01;
+      cube.rotation.x += 0.006;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', ()=>{
+      camera.aspect = window.innerWidth / (window.innerHeight*0.5);
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight*0.5);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>MAC Address Generator Demo</title>
+  <style>
+    body{margin:0;background:#081021;color:#fff;font-family:Arial}
+    #c{width:100vw;height:50vh;display:block}
+    .label{padding:14px;text-align:center}
+    .label h1{color:#3aa0ff;margin:0}
+  </style>
+</head>
+<body>
+  <div id="c"></div>
+  <div class="label"><h1>MAC Address Generator</h1><p>Generates random MAC addresses in common formats</p></div>
+  <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(50, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({antialias:true});
+    renderer.setSize(window.innerWidth, window.innerHeight*0.5);
+    document.getElementById('c').appendChild(renderer.domElement);
+
+    const geometry = new THREE.TorusKnotGeometry(1.2,0.35,128,24);
+    const material = new THREE.MeshStandardMaterial({color:0x3aa0ff, metalness:0.4, roughness:0.3});
+    const knot = new THREE.Mesh(geometry, material);
+    scene.add(knot);
+    scene.add(new THREE.DirectionalLight(0xffffff, 1));
+    scene.add(new THREE.AmbientLight(0x404040));
+    camera.position.z = 4;
+
+    function animate(){
+      requestAnimationFrame(animate);
+      knot.rotation.x += 0.01;
+      knot.rotation.y += 0.012;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', ()=>{
+      camera.aspect = window.innerWidth / (window.innerHeight*0.5);
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight*0.5);
+    });
+  </script>
+</body>
+</html>

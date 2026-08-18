@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Mall Inventory Demo</title>
+  <style>body{margin:0;background:#081426;color:#fff;font-family:Arial}#v{width:100vw;height:50vh}</style>
+</head>
+<body>
+  <div id="v"></div>
+  <div style="padding:12px;text-align:center"><h1 style="margin:6px 0;color:#ff8a65">Mall Inventory</h1><p style="color:#bcd">Simple inventory manager with CSV export</p></div>
+  <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
+  <script>
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth/window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({antialias:true});
+    renderer.setSize(window.innerWidth, window.innerHeight*0.5);
+    document.getElementById('v').appendChild(renderer.domElement);
+
+    const geometry = new THREE.PlaneGeometry(4,2.5);
+    const material = new THREE.MeshStandardMaterial({color:0xff8a65, metalness:0.2, roughness:0.4});
+    const panel = new THREE.Mesh(geometry, material);
+    panel.rotation.x = -0.2;
+    scene.add(panel);
+
+    const light = new THREE.DirectionalLight(0xffffff,1);
+    light.position.set(5,5,5);
+    scene.add(light);
+    scene.add(new THREE.AmbientLight(0x404040));
+    camera.position.z = 6;
+
+    function animate(){
+      requestAnimationFrame(animate);
+      panel.rotation.y += 0.007;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener('resize', ()=>{
+      camera.aspect = window.innerWidth / (window.innerHeight*0.5);
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight*0.5);
+    });
+  </script>
+</body>
+</html>

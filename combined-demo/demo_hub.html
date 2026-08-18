@@ -2,137 +2,134 @@
 <html>
 <head>
   <meta charset="utf-8" />
-  <title>Utility Tools — Demo Hub</title>
+  <title>Utility & Titanic Demo Hub</title>
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <style>
-    body{font-family:Arial,Helvetica,sans-serif;margin:0;background:#071426;color:#fff}
-    .header{padding:18px;text-align:center;background:linear-gradient(90deg,#071426,#0b2236)}
+    body{font-family:Inter,Arial,Helvetica,sans-serif;margin:0;background:#071426;color:#fff}
+    .header{padding:18px 20px;text-align:center;background:linear-gradient(90deg,#071426,#0b2236)}
     .header h1{margin:0;font-size:22px;color:#fff}
-    .container{display:flex;gap:16px;flex-wrap:wrap;justify-content:center;padding:18px}
-    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;padding:12px;box-shadow:0 8px 30px rgba(0,0,0,0.6);min-width:300px;max-width:520px}
-    .canvas-wrap{width:100%;height:260px;background:#091426;border-radius:8px;overflow:hidden}
-    .meta{padding:8px 6px}
+    .header .sub{color:#9fb4c9;margin-top:6px}
+    .grid{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;padding:22px}
+    .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));border-radius:12px;padding:12px;box-shadow:0 8px 30px rgba(0,0,0,0.6);min-width:300px;max-width:520px;flex:1 1 320px}
+    .canvas-wrap{width:100%;height:220px;background:#091426;border-radius:8px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .meta{padding:10px 6px}
     .btns{display:flex;gap:8px;flex-wrap:wrap}
     .btn{padding:8px 10px;border-radius:8px;background:#0b6bff;color:#fff;text-decoration:none;font-weight:700}
     .small{font-size:13px;color:#b6c7d6}
-    @media(max-width:980px){.container{flex-direction:column;align-items:center}.card{max-width:92%}}
+    .title{font-size:16px;font-weight:700}
+    .desc{margin-top:8px;color:#cfe0ee;font-size:14px;min-height:44px}
+    img.preview{max-width:100%;max-height:100%;object-fit:contain}
+    @media(max-width:980px){.grid{flex-direction:column;align-items:center}.card{max-width:92%}}
   </style>
 </head>
 <body>
   <div class="header">
-    <h1>Utility Tools — Demo Hub</h1>
-    <div class="small">Interactive previews: Password generator · MAC generator · Mall inventory</div>
+    <h1>Projects Demo Hub</h1>
+    <div class="sub">Interactive previews and quick descriptions — Password Generator, MAC Generator, Mall Inventory, Titanic Survival</div>
   </div>
-  <div class="container">
+
+  <div class="grid">
+    <!-- Password Generator -->
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <div>
-          <strong>Password Generator</strong>
-          <div class="small">Secure password CLI — demo preview below</div>
+          <div class="title">Password Generator</div>
+          <div class="small">Secure password CLI · simple options for length, numbers & symbols</div>
         </div>
         <a class="btn" href="https://github.com/prajapati-kamal/titanic-survival-prediction/blob/main/password-generator/password_generator.py" target="_blank">View Code</a>
       </div>
       <div class="canvas-wrap" id="pwCanvas"></div>
       <div class="meta">
-        <div class="btns"><a class="btn" href="#" onclick="capture('pw')">Record GIF</a><a class="btn" href="#" onclick="focusCanvas('pwCanvas')">Focus</a></div>
-        <div style="margin-top:8px" class="small">Open the Python script in the repo to run locally: password-generator/password_generator.py</div>
+        <div class="desc">Generates cryptographically secure passwords using Python's secrets module. Use the CLI to specify length, count, and character sets. Good for quick automation and scripting.</div>
+        <div style="margin-top:8px" class="btns"><a class="btn" href="#" onclick="focusCanvas('pwCanvas')">Focus</a></div>
       </div>
     </div>
 
+    <!-- MAC Address Generator -->
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <div>
-          <strong>MAC Address Generator</strong>
-          <div class="small">Random MAC formats — demo preview below</div>
+          <div class="title">MAC Address Generator</div>
+          <div class="small">Random MACs · common separators · formats</div>
         </div>
         <a class="btn" href="https://github.com/prajapati-kamal/titanic-survival-prediction/blob/main/mac-address-generator/mac_address_generator.py" target="_blank">View Code</a>
       </div>
       <div class="canvas-wrap" id="macCanvas"></div>
       <div class="meta">
-        <div class="btns"><a class="btn" href="#" onclick="capture('mac')">Record GIF</a><a class="btn" href="#" onclick="focusCanvas('macCanvas')">Focus</a></div>
-        <div style="margin-top:8px" class="small">Run the script locally: mac-address-generator/mac_address_generator.py</div>
+        <div class="desc">Creates random MAC addresses in colon, dash, or plain hex formats. Useful for testing network tools or anonymized datasets. CLI supports generating multiple addresses at once.</div>
+        <div style="margin-top:8px" class="btns"><a class="btn" href="#" onclick="focusCanvas('macCanvas')">Focus</a></div>
       </div>
     </div>
 
+    <!-- Mall Inventory -->
     <div class="card">
       <div style="display:flex;justify-content:space-between;align-items:center">
         <div>
-          <strong>Mall Inventory</strong>
-          <div class="small">Inventory manager + CSV export — demo preview below</div>
+          <div class="title">Mall Inventory Manager</div>
+          <div class="small">CLI inventory tool · add/remove/list · CSV export</div>
         </div>
         <a class="btn" href="https://github.com/prajapati-kamal/titanic-survival-prediction/blob/main/mall-inventory/mall_inventory.py" target="_blank">View Code</a>
       </div>
       <div class="canvas-wrap" id="mallCanvas"></div>
       <div class="meta">
-        <div class="btns"><a class="btn" href="#" onclick="capture('mall')">Record GIF</a><a class="btn" href="#" onclick="focusCanvas('mallCanvas')">Focus</a></div>
-        <div style="margin-top:8px" class="small">Run the script locally: mall-inventory/mall_inventory.py</div>
+        <div class="desc">A lightweight inventory manager to track SKU, name, quantity, and price. Supports export to CSV for reporting. Ideal for small retail demos and teaching basic data workflows.</div>
+        <div style="margin-top:8px" class="btns"><a class="btn" href="#" onclick="focusCanvas('mallCanvas')">Focus</a></div>
       </div>
     </div>
+
+    <!-- Titanic Project -->
+    <div class="card">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <div>
+          <div class="title">Titanic Survival Prediction</div>
+          <div class="small">EDA & Random Forest · Kaggle dataset · feature engineering</div>
+        </div>
+        <a class="btn" href="https://github.com/prajapati-kamal/titanic-survival-prediction" target="_blank">View Repo</a>
+      </div>
+      <div class="canvas-wrap" id="titanicCanvas">
+        <img class="preview" src="https://raw.githubusercontent.com/prajapati-kamal/titanic-survival-prediction/main/feature_importance.png" alt="feature importance"/>
+      </div>
+      <div class="meta">
+        <div class="desc">End-to-end ML project predicting passenger survival. Includes data cleaning, feature engineering (Title, FamilySize, Deck), EDA visuals, and a Random Forest baseline with 81% validation accuracy.</div>
+        <div style="margin-top:8px" class="btns"><a class="btn" href="#" onclick="focusCanvas('titanicCanvas')">Focus</a></div>
+      </div>
+    </div>
+
   </div>
 
   <script src="https://unpkg.com/three@0.152.2/build/three.min.js"></script>
   <script>
-    // Three independent scenes, one per div
-    function makeScene(containerId, createObjects){
+    // helper to create three scenes for canvas containers
+    function makeScene(containerId, geometryFactory, color){
       const container = document.getElementById(containerId);
+      if(!container) return null;
       const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(45, container.clientWidth / container.clientHeight, 0.1, 1000);
+      const camera = new THREE.PerspectiveCamera(45, container.clientWidth/container.clientHeight, 0.1, 1000);
       const renderer = new THREE.WebGLRenderer({antialias:true, alpha:true});
       renderer.setSize(container.clientWidth, container.clientHeight);
       container.appendChild(renderer.domElement);
       const light = new THREE.DirectionalLight(0xffffff,1);
-      light.position.set(5,5,5);
-      scene.add(light);
-      scene.add(new THREE.AmbientLight(0x404040));
+      light.position.set(5,5,5); scene.add(light); scene.add(new THREE.AmbientLight(0x404040));
       camera.position.z = 6;
-      const objects = createObjects();
-      objects.forEach(o=>scene.add(o));
+      const mesh = geometryFactory(color);
+      scene.add(mesh);
       function animate(){
         requestAnimationFrame(animate);
-        objects.forEach(o=>{ o.rotation.x+= (o.userData?.rx||0.006); o.rotation.y+=(o.userData?.ry||0.01) });
-        renderer.render(scene,camera);
+        mesh.rotation.x += (mesh.userData.rx||0.006);
+        mesh.rotation.y += (mesh.userData.ry||0.01);
+        renderer.render(scene, camera);
       }
       animate();
-      window.addEventListener('resize', ()=>{
-        renderer.setSize(container.clientWidth, container.clientHeight);
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-      });
+      window.addEventListener('resize', ()=>{ renderer.setSize(container.clientWidth, container.clientHeight); camera.aspect = container.clientWidth/container.clientHeight; camera.updateProjectionMatrix(); });
       return {scene, camera, renderer};
     }
 
-    // password cube
-    makeScene('pwCanvas', ()=>{
-      const geo = new THREE.BoxGeometry(3,2,0.3);
-      const mat = new THREE.MeshStandardMaterial({color:0x00e0a8, metalness:0.3, roughness:0.4});
-      const cube = new THREE.Mesh(geo,mat); cube.userData={rx:0.006,ry:0.01};
-      return [cube];
-    });
+    // create simple shapes for each tool
+    makeScene('pwCanvas', (c)=>{ const geo=new THREE.BoxGeometry(3,2,0.3); const mat=new THREE.MeshStandardMaterial({color:c||0x00e0a8, metalness:0.3, roughness:0.4}); const m=new THREE.Mesh(geo,mat); m.userData={rx:0.006, ry:0.01}; return m; }, 0x00e0a8);
+    makeScene('macCanvas', (c)=>{ const geo=new THREE.TorusKnotGeometry(1.1,0.32,140,28); const mat=new THREE.MeshStandardMaterial({color:c||0x3aa0ff, metalness:0.4, roughness:0.3}); const m=new THREE.Mesh(geo,mat); m.userData={rx:0.01, ry:0.012}; return m; }, 0x3aa0ff);
+    makeScene('mallCanvas', (c)=>{ const geo=new THREE.PlaneGeometry(4,2.4); const mat=new THREE.MeshStandardMaterial({color:c||0xff8a65, metalness:0.2, roughness:0.4}); const m=new THREE.Mesh(geo,mat); m.rotation.x=-0.15; m.userData={rx:0.004, ry:0.007}; return m; }, 0xff8a65);
 
-    // mac torus knot
-    makeScene('macCanvas', ()=>{
-      const geo = new THREE.TorusKnotGeometry(1.1,0.32,140,28);
-      const mat = new THREE.MeshStandardMaterial({color:0x3aa0ff, metalness:0.4, roughness:0.3});
-      const knot = new THREE.Mesh(geo,mat); knot.userData={rx:0.01,ry:0.012};
-      return [knot];
-    });
-
-    // mall panel
-    makeScene('mallCanvas', ()=>{
-      const geo = new THREE.PlaneGeometry(4,2.4);
-      const mat = new THREE.MeshStandardMaterial({color:0xff8a65, metalness:0.2, roughness:0.4});
-      const panel = new THREE.Mesh(geo,mat); panel.rotation.x=-0.15; panel.userData={rx:0.004,ry:0.007};
-      return [panel];
-    });
-
-    function focusCanvas(id){
-      document.getElementById(id).scrollIntoView({behavior:'smooth', block:'center'});
-    }
-
-    // Simple capture hint (not performing recording in-browser)
-    function capture(which){
-      alert('To record: open this page in the browser and use a screen recorder (Loom/OBS/QuickTime). Record the area of the chosen preview for ~8–10s.');
-    }
+    function focusCanvas(id){ document.getElementById(id).scrollIntoView({behavior:'smooth', block:'center'}); }
   </script>
 </body>
 </html>
